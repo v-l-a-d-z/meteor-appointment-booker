@@ -2,3 +2,30 @@ body {
   padding: 10px;
   font-family: sans-serif;
 }
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.app-bar h1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.5em;
+  margin: 0;
+  font-weight: 200;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
