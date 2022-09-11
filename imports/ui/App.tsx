@@ -2,29 +2,16 @@ import React from 'react'
 import { Meteor } from 'meteor/meteor'
 import LoginScreen from './screens/LoginScreen'
 import { useTracker } from 'meteor/react-meteor-data'
+import { UserBadge } from './components/UserBadge'
 
 export const App = () => {
   const user = useTracker(() => Meteor.user())
-  const logout = () => Meteor.logout()
-
-  const userBadge = (
-    <div className="user-badge">
-      {user ? (
-        <>
-          {user.username}
-          <button onClick={logout}>|→</button>
-        </>
-      ) : (
-        <>sign in</>
-      )}
-    </div>
-  )
 
   return (
     <div className="app">
       <header className="app-bar">
         <h1>Appointments</h1>
-        {userBadge}
+        <UserBadge user={user} />
       </header>
       <div className="main">
         {user ? <h1>Welcome {user.username}</h1> : <LoginScreen />}
