@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor'
 import { Accounts } from 'meteor/accounts-base'
+import '/imports/api/appointmentsMethods'
 
 const SEED_USERNAME1 = 'testuser1'
 const SEED_PASSWORD1 = 'pass'
