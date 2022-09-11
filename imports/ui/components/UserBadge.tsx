@@ -1,5 +1,6 @@
 import React from 'react'
 import { Meteor } from 'meteor/meteor'
+import './UserBadge.styles.css'
 
 export type UserBadgeProps = {
   user: Meteor.User | null
