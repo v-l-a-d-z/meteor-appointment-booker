@@ -7,10 +7,16 @@ export const App = () => {
   const user = useTracker(() => Meteor.user())
   const logout = () => Meteor.logout()
 
-  const userBadge = user && (
-    <div className="user-badge" onClick={logout}>
-      {user.username}
-      <button onClick={logout}>→</button>
+  const userBadge = (
+    <div className="user-badge">
+      {user ? (
+        <>
+          {user.username}
+          <button onClick={logout}>|→</button>
+        </>
+      ) : (
+        <>sign in</>
+      )}
     </div>
   )
 
