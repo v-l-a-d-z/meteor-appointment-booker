@@ -72,7 +72,7 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
         name={'date'}
         value={dateString}
         required
-        onChange={(e) => setDateString(e.target.value)}
+        onChange={(e) => setDateString(e.target.value.substring(0, 10))}
       />
 
       <div className="create-control">
