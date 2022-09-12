@@ -15,12 +15,14 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [dateString, setDateString] = useState('')
+  const [isEditing, setIsEditing] = useState(false)
 
   useEffect(() => {
     if (!selectedAppointment) {
       return
     }
 
+    setIsEditing(true)
     setFirstName(selectedAppointment.firstName)
     setLastName(selectedAppointment.lastName)
     setDateString(selectedAppointment.date.toISOString().substring(0, 10))
@@ -36,7 +38,7 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
       return
     }
 
-    if (selectedAppointment) {
+    if (isEditing && selectedAppointment) {
       // TODO: optimization: only trigger update when values changed
       const updatedAppointment: Appointment = {
         _id: selectedAppointment?._id,
@@ -58,6 +60,7 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
     setFirstName('')
     setLastName('')
     setDateString('')
+    setIsEditing(false)
     clearSelectedAppoitnment()
   }
 
