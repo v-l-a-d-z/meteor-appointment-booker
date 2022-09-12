@@ -36,7 +36,20 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
       return
     }
 
-    Meteor.call('appointments.insert', firstName, lastName, date)
+    if (selectedAppointment) {
+      // TODO: optimization: only trigger update when values changed
+      const updatedAppointment: Appointment = {
+        _id: selectedAppointment?._id,
+        firstName,
+        lastName,
+        date,
+        userId: selectedAppointment?.userId,
+      }
+      Meteor.call('appointments.update', updatedAppointment)
+    } else {
+      Meteor.call('appointments.insert', firstName, lastName, date)
+    }
+
     // TODO: display success message to user
     clearForm()
   }
