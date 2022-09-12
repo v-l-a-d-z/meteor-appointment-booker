@@ -19,20 +19,18 @@ const seedAppointments = (username: string, count = 20, daysToFuture = 30) => {
   const firstNames = ['Ross', 'Chandler', 'Joey', 'Monica', 'Phoebe', 'Rachel']
   const lastNames = ['Geller', 'Bing', 'Tribianni', 'Buffey', 'Green']
 
-  if (Appointments.find({}).count() == 0) {
-    for (let i = 0; i < count; i++) {
-      const randomDate = new Date()
-      randomDate.setDate(
-        randomDate.getDate() + Math.floor(Math.random() * (daysToFuture + 1))
-      )
+  for (let i = 0; i < count; i++) {
+    const randomDate = new Date()
+    randomDate.setDate(
+      randomDate.getDate() + Math.floor(Math.random() * (daysToFuture + 1))
+    )
 
-      Appointments.insert({
-        firstName: firstNames[Math.floor(Math.random() * firstNames.length)],
-        date: randomDate,
-        lastName: lastNames[Math.floor(Math.random() * lastNames.length)],
-        userId: user._id,
-      })
-    }
+    Appointments.insert({
+      firstName: firstNames[Math.floor(Math.random() * firstNames.length)],
+      date: randomDate,
+      lastName: lastNames[Math.floor(Math.random() * lastNames.length)],
+      userId: user._id,
+    })
   }
 }
 
@@ -51,5 +49,8 @@ Meteor.startup(() => {
     })
   }
 
-  seedAppointments(SEED_USERNAME1)
+  if (Appointments.find({}).count() == 0) {
+    seedAppointments(SEED_USERNAME1)
+    seedAppointments(SEED_USERNAME2)
+  }
 })
