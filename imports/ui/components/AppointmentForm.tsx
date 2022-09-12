@@ -101,7 +101,7 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
           Cancel
         </button>
         <button type="submit" disabled={!firstName || !lastName || !dateString}>
-          Create
+          Save
         </button>
       </div>
     </form>
