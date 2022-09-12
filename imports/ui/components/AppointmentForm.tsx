@@ -17,6 +17,8 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
   const [dateString, setDateString] = useState('')
   const [isEditing, setIsEditing] = useState(false)
 
+  const title = isEditing ? 'Edit appointment' : 'Create appointment'
+
   useEffect(() => {
     if (!selectedAppointment) {
       return
@@ -67,7 +69,7 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
   // TODO: nice to have: disable past dates in date picker
   return (
     <form onSubmit={submit} className="appointment-form">
-      <label>Create appointment:</label>
+      <label>{title}</label>
       <input
         type="text"
         placeholder="First name"
