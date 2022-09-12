@@ -97,7 +97,9 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
       />
 
       <div className="create-control">
-        <button onClick={clearForm}>Cancel</button>
+        <button type="button" onClick={clearForm}>
+          Cancel
+        </button>
         <button type="submit" disabled={!firstName || !lastName || !dateString}>
           Create
         </button>
