@@ -1,11 +1,28 @@
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useEffect, useState } from 'react'
 import { Meteor } from 'meteor/meteor'
 import './AppointmentForm.styles.css'
+import { Appointment } from '/imports/db/Appointments'
 
-export const AppointmentForm = () => {
+export type AppointmentProps = {
+  selectedAppointment?: Appointment
+}
+
+export const AppointmentForm: React.FC<AppointmentProps> = ({
+  selectedAppointment
+}) => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [dateString, setDateString] = useState('')
+
+  useEffect(() => {
+    if (!selectedAppointment) {
+      return
+    }
+
+    setFirstName(selectedAppointment.firstName)
+    setLastName(selectedAppointment.lastName)
+    setDateString(selectedAppointment.date.toISOString().substring(0, 10))
+  }, [selectedAppointment])
 
   const submit = (e: FormEvent) => {
     e.preventDefault()

@@ -17,7 +17,7 @@ export const HomeScreen: React.FC = () => {
 
   return (
     <div className="homescreen">
-      <AppointmentForm />
+      <AppointmentForm selectedAppointment={selectedAppointment} />
       <AppointmentList handleItemSelected={handleItemSelected} />
     </div>
   )
