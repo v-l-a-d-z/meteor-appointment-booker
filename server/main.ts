@@ -10,7 +10,7 @@ const SEED_PASSWORD1 = 'pass'
 const SEED_USERNAME2 = 'testuser2'
 const SEED_PASSWORD2 = 'word'
 
-const seedAppointments = (username: string, count = 20) => {
+const seedAppointments = (username: string, count = 20, daysToFuture = 30) => {
   const user = Accounts.findUserByUsername(username)
   if (!user) {
     return
@@ -21,9 +21,14 @@ const seedAppointments = (username: string, count = 20) => {
 
   if (Appointments.find({}).count() == 0) {
     for (let i = 0; i < count; i++) {
+      const randomDate = new Date()
+      randomDate.setDate(
+        randomDate.getDate() + Math.floor(Math.random() * (daysToFuture + 1))
+      )
+
       Appointments.insert({
         firstName: firstNames[Math.floor(Math.random() * firstNames.length)],
-        date: new Date(),
+        date: randomDate,
         lastName: lastNames[Math.floor(Math.random() * lastNames.length)],
         userId: user._id,
       })
