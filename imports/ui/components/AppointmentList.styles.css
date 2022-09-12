@@ -1,0 +1,22 @@
+.appointment-list {
+  display: flex;
+  flex-direction: column;
+  margin: 4px;
+  padding: 4px 12px;
+  border: 1px solid #aaa;
+  border-radius: 12px;
+  width: 250px;
+}
+
+.appointment-list label {
+  padding: 4px;
+  margin-top: 4px;
+  font-weight: 200;
+}
+
+.appointment-list .list-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: smaller;
+  font-weight: 200;
+}
