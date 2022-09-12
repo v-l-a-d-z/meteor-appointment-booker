@@ -10,19 +10,21 @@ const SEED_PASSWORD1 = 'pass'
 const SEED_USERNAME2 = 'testuser2'
 const SEED_PASSWORD2 = 'word'
 
-const seedAppointment = (username: string) => {
+const seedAppointments = (username: string, count = 20) => {
   const user = Accounts.findUserByUsername(username)
   if (!user) {
     return
   }
 
   if (Appointments.find({}).count() == 0) {
-    Appointments.insert({
-      firstName: 'John',
-      lastName: 'Doe',
-      date: new Date(),
-      userId: user._id,
-    })
+    for (let i = 0; i < count; i++) {
+      Appointments.insert({
+        firstName: 'John',
+        lastName: 'Doe',
+        date: new Date(),
+        userId: user._id,
+      })
+    }
   }
 }
 
@@ -41,5 +43,5 @@ Meteor.startup(() => {
     })
   }
 
-  seedAppointment(SEED_USERNAME1)
+  seedAppointments(SEED_USERNAME1)
 })
