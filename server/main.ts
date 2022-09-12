@@ -16,12 +16,15 @@ const seedAppointments = (username: string, count = 20) => {
     return
   }
 
+  const firstNames = ['Ross', 'Chandler', 'Joey', 'Monica', 'Phoebe', 'Rachel']
+  const lastNames = ['Geller', 'Bing', 'Tribianni', 'Buffey', 'Green']
+
   if (Appointments.find({}).count() == 0) {
     for (let i = 0; i < count; i++) {
       Appointments.insert({
-        firstName: 'John',
-        lastName: 'Doe',
+        firstName: firstNames[Math.floor(Math.random() * firstNames.length)],
         date: new Date(),
+        lastName: lastNames[Math.floor(Math.random() * lastNames.length)],
         userId: user._id,
       })
     }
