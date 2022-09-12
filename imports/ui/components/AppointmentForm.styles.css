@@ -1,6 +1,7 @@
 .appointment-form {
   display: flex;
   flex-direction: column;
+  margin: 4px;
   padding: 4px 12px;
   border: 1px solid #aaa;
   border-radius: 12px;
