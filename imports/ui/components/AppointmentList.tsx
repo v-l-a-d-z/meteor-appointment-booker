@@ -4,7 +4,13 @@ import React from 'react'
 import { Appointment, Appointments } from '/imports/db/Appointments'
 import './AppointmentList.styles.css'
 
-export const AppointmentList: React.FC = () => {
+export type AppointmentListProps = {
+  handleItemSelected: (appointment: Appointment) => void
+}
+
+export const AppointmentList: React.FC<AppointmentListProps> = ({
+  handleItemSelected,
+}) => {
   const myAppointments: Appointment[] = useTracker(() => {
     if (!Meteor.user()) {
       console.error('Fetching appointments without logged user')
@@ -22,7 +28,11 @@ export const AppointmentList: React.FC = () => {
     <div className="appointment-list">
       <label>My appointments:</label>
       {myAppointments.map((appointment: Appointment) => (
-        <div className="list-item" key={appointment._id}>
+        <div
+          className="list-item"
+          key={appointment._id}
+          onClick={() => handleItemSelected(appointment)}
+        >
           <div>{`${appointment.firstName} ${appointment.lastName}`}</div>
           <div>{appointment.date.toDateString()}</div>
         </div>
