@@ -5,10 +5,12 @@ import { Appointment } from '/imports/db/Appointments'
 
 export type AppointmentProps = {
   selectedAppointment?: Appointment
+  clearSelectedAppoitnment: () => void
 }
 
 export const AppointmentForm: React.FC<AppointmentProps> = ({
-  selectedAppointment
+  selectedAppointment,
+  clearSelectedAppoitnment,
 }) => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -43,6 +45,7 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
     setFirstName('')
     setLastName('')
     setDateString('')
+    clearSelectedAppoitnment()
   }
 
   // TODO: nice to have: disable past dates in date picker
