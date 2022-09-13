@@ -11,9 +11,7 @@ Meteor.methods({
     }
 
     Appointments.insert({
-      firstName,
-      lastName,
-      date,
+      ...appointment,
       userId: this.userId,
     })
   },
