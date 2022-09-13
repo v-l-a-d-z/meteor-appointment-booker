@@ -22,7 +22,20 @@ export const AppointmentList: React.FC<AppointmentListProps> = ({
     // TODO: Handle loading state
     Meteor.subscribe('appointments')
 
-    return Appointments.find({}, { sort: { date: 1 } }).fetch()
+    // TODO: Investigate - is this always fetching while searching or searching on a local collection?
+    return Appointments.find(
+      {
+        $or: [
+          {
+            $where: `this.firstName.toLowerCase().startsWith('${searchPhrase}')`,
+          },
+          {
+            $where: `this.lastName.toLowerCase().startsWith('${searchPhrase}')`,
+          },
+        ],
+      },
+      { sort: { date: 1 } }
+    ).fetch()
   })
 
   const processSearchPhrase = useCallback(
