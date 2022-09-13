@@ -3,6 +3,12 @@ body {
   font-family: sans-serif;
 }
 
+@media screen and (min-height: 400px) {
+  body {
+    overflow: hidden;
+  }
+}
+
 .app {
   display: flex;
   flex-direction: column;
@@ -13,6 +19,17 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .app-bar {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .app-bar > h1 {
+    text-align: center;
+  }
 }
 
 .app-bar h1 {
@@ -36,4 +53,18 @@ body {
   margin-bottom: 4px;
   font-size: smaller;
   color: red;
+}
+
+input {
+  padding: 4px;
+  margin-top: 4px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+button {
+  padding: 4px 12px 4px 12px;
+  background-color: white;
+  border: 1px solid #aaa;
+  border-radius: 16px;
 }

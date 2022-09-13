@@ -13,16 +13,6 @@
   margin-top: 20px;
 }
 
-.login-form input {
-  padding: 4px;
-  margin-top: 4px;
-  border: 1px solid #aaa;
-  border-radius: 4px;
-}
-
 .login-form button {
-  padding: 4px 12px 4px 12px;
-  background-color: white;
-  border: 1px solid #aaa;
-  border-radius: 16px;
+  margin-top: 4px;
 }

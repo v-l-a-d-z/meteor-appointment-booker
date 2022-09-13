@@ -57,21 +57,23 @@ export const AppointmentList: React.FC<AppointmentListProps> = ({
         onChange={(e) => processSearchPhrase(e.target.value)}
       />
 
-      {myAppointments.map((appointment: Appointment) => {
-        const fullName = `${appointment.firstName} ${appointment.lastName}`
+      <div className="list-item-container">
+        {myAppointments.map((appointment: Appointment) => {
+          const fullName = `${appointment.firstName} ${appointment.lastName}`
 
-        return (
-          <div
-            className="list-item"
-            key={appointment._id}
-            onClick={() => handleItemSelected(appointment)}
-            title={fullName}
-          >
-            <div>{fullName}</div>
-            <div>{appointment.date.toDateString()}</div>
-          </div>
-        )
-      })}
+          return (
+            <div
+              className="list-item"
+              key={appointment._id}
+              onClick={() => handleItemSelected(appointment)}
+              title={fullName}
+            >
+              <div>{fullName}</div>
+              <div>{appointment.date.toDateString()}</div>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }

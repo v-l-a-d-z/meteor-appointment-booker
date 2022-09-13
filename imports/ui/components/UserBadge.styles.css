@@ -7,5 +7,10 @@
 }
 
 .user-badge button {
+  width: 18px;
+  height: 22px;
   margin-left: 12px;
+  padding: 2px;
+  border-radius: 2px;
+  font-size: xx-small;
 }
