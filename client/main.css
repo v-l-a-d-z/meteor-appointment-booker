@@ -61,3 +61,10 @@ input {
   border: 1px solid #aaa;
   border-radius: 4px;
 }
+
+button {
+  padding: 4px 12px 4px 12px;
+  background-color: white;
+  border: 1px solid #aaa;
+  border-radius: 16px;
+}

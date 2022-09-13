@@ -16,10 +16,6 @@
 }
 
 .appointment-form button {
-  padding: 4px 12px 4px 12px;
-  background-color: white;
-  border: 1px solid #aaa;
-  border-radius: 16px;
   width: 70px;
   font-size: smaller;
 }
