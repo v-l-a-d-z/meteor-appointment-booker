@@ -1,7 +1,7 @@
 import React, { FormEvent, useEffect, useState } from 'react'
 import { Meteor } from 'meteor/meteor'
 import './AppointmentForm.styles.css'
-import { Appointment } from '/imports/db/Appointments'
+import { Appointment } from '/imports/common/types/Appointment'
 
 export type AppointmentProps = {
   selectedAppointment?: Appointment

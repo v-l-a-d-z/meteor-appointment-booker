@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor'
-import { Appointment, Appointments } from '../db/Appointments'
+import { Appointment } from '../common/types/Appointment'
+import { Appointments } from '../db/Appointments'
 
 Meteor.methods({
   'appointments.insert'(firstName: string, lastName: string, date: Date) {

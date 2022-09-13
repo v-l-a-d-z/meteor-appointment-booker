@@ -1,7 +1,8 @@
 import { Meteor } from 'meteor/meteor'
 import { useTracker } from 'meteor/react-meteor-data'
 import React, { useCallback, useState } from 'react'
-import { Appointment, Appointments } from '/imports/db/Appointments'
+import { Appointments } from '/imports/db/Appointments'
+import { Appointment } from '/imports/common/types/Appointment'
 import './AppointmentList.styles.css'
 
 export type AppointmentListProps = {
