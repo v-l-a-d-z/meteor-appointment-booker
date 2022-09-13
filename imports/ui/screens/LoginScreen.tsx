@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor'
 import React, { FormEvent, useState } from 'react'
+import { strings } from '../localization/strings'
 import './LoginScreen.styles.css'
 
 const LoginScreen: React.FC = () => {
@@ -11,7 +12,7 @@ const LoginScreen: React.FC = () => {
     e.preventDefault()
 
     Meteor.loginWithPassword(username, password, () => {
-      setError('Login failed. Please check your username and password.')
+      setError(strings.loginFailed)
     })
   }
 
@@ -20,7 +21,7 @@ const LoginScreen: React.FC = () => {
       <div className="login-controls">
         <input
           type="text"
-          placeholder="Username"
+          placeholder={strings.inputPlaceholderUsername}
           name="username"
           required
           onChange={(e) => setUsername(e.target.value)}
@@ -28,13 +29,13 @@ const LoginScreen: React.FC = () => {
 
         <input
           type="password"
-          placeholder="Password"
+          placeholder={strings.inputPlaceholderPassword}
           name="password"
           required
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button type="submit">Log In</button>
+        <button type="submit">{strings.logIn}</button>
       </div>
       {error && <div className="error">{error}</div>}
     </form>

@@ -4,6 +4,7 @@ import React, { useCallback, useState } from 'react'
 import { Appointments } from '/imports/db/Appointments'
 import { Appointment } from '/imports/common/types/Appointment'
 import './AppointmentList.styles.css'
+import { strings } from '../localization/strings'
 
 export type AppointmentListProps = {
   handleItemSelected: (appointment: Appointment) => void
@@ -50,11 +51,11 @@ export const AppointmentList: React.FC<AppointmentListProps> = ({
   // TODO: extract item to component
   return (
     <div className="appointment-list">
-      <label>My appointments:</label>
+      <label>{strings.appointmentsListTitle}</label>
 
       <input
         type="text"
-        placeholder="Search"
+        placeholder={strings.inputPlaceholderSearch}
         onChange={(e) => processSearchPhrase(e.target.value)}
       />
 

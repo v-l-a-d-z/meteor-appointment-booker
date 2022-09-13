@@ -1,6 +1,7 @@
 import React from 'react'
 import { Meteor } from 'meteor/meteor'
 import './UserBadge.styles.css'
+import { strings } from '../localization/strings'
 
 export type UserBadgeProps = {
   user: Meteor.User | null
@@ -17,7 +18,7 @@ export const UserBadge: React.FC<UserBadgeProps> = ({ user }) => {
           <button onClick={logout}>|→</button>
         </>
       ) : (
-        <>sign in</>
+        <>{strings.signIn}</>
       )}
     </div>
   )
