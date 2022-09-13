@@ -6,12 +6,25 @@
   border: 1px solid #aaa;
   border-radius: 12px;
   width: 250px;
+  height: 400px;
 }
 
 .appointment-list label {
   padding: 4px;
   margin-top: 4px;
   font-weight: 200;
+}
+
+.appointment-list input {
+  padding: 4px;
+  margin-top: 4px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.appointment-list .list-item-container {
+  padding-top: 8px;
+  overflow: scroll;
 }
 
 .appointment-list .list-item {
