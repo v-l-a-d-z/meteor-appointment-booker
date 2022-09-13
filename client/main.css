@@ -30,3 +30,10 @@ body {
   align-items: center;
   overflow: auto;
 }
+
+.error {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  font-size: smaller;
+  color: red;
+}
