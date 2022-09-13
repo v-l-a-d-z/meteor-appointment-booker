@@ -30,6 +30,6 @@
       "client": "client/main.tsx",
       "server": "server/main.ts"
     },
-    "testModule": "tests/main.ts"
+    "testModule": "tests/helpers/dateHelper.test.ts"
   }
 }

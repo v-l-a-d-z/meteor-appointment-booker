@@ -5,6 +5,7 @@ import {
   Appointment,
   AppointmentInsert,
 } from '/imports/common/types/Appointment'
+import { getDateString } from '/imports/helpers/DateHelper'
 
 export type AppointmentProps = {
   selectedAppointment?: Appointment
@@ -39,11 +40,6 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
     setError(undefined)
 
     const date = new Date(dateString)
-    if (date < new Date()) {
-      // TODO: display error to user
-      console.error('New appointment can not be in the past')
-      return
-    }
 
     if (isEditing && selectedAppointment) {
       // TODO: optimization: only trigger update when values changed
@@ -116,6 +112,7 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
       <input
         type={'date'}
         name={'date'}
+        min={getDateString(new Date())}
         value={dateString}
         required
         onChange={(e) => setDateString(e.target.value.substring(0, 10))}
