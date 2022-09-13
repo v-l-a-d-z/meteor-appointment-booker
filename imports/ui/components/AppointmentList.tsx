@@ -27,10 +27,10 @@ export const AppointmentList: React.FC<AppointmentListProps> = ({
       {
         $or: [
           {
-            $where: `this.firstName.toLowerCase().startsWith('${searchPhrase}')`,
+            $where: `this.firstName?.toLowerCase().startsWith('${searchPhrase}')`,
           },
           {
-            $where: `this.lastName.toLowerCase().startsWith('${searchPhrase}')`,
+            $where: `this.lastName?.toLowerCase().startsWith('${searchPhrase}')`,
           },
         ],
       },
