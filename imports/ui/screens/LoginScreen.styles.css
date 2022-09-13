@@ -22,6 +22,7 @@
 
 .login-form button {
   padding: 4px 12px 4px 12px;
+  margin-top: 4px;
   background-color: white;
   border: 1px solid #aaa;
   border-radius: 16px;
