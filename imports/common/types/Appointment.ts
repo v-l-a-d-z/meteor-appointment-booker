@@ -5,3 +5,8 @@ export type Appointment = {
   date: Date
   userId: string
 }
+
+export type AppointmentInsert = Pick<
+  Appointment,
+  'firstName' | 'lastName' | 'date'
+>

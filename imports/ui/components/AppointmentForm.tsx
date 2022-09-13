@@ -1,7 +1,10 @@
 import React, { FormEvent, useEffect, useState } from 'react'
 import { Meteor } from 'meteor/meteor'
 import './AppointmentForm.styles.css'
-import { Appointment } from '/imports/common/types/Appointment'
+import {
+  Appointment,
+  AppointmentInsert,
+} from '/imports/common/types/Appointment'
 
 export type AppointmentProps = {
   selectedAppointment?: Appointment
@@ -59,11 +62,15 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
         }
       )
     } else {
-      Meteor.call(
-        'appointments.insert',
+      const appointmentInsert: AppointmentInsert = {
         firstName,
         lastName,
         date,
+      }
+
+      Meteor.call(
+        'appointments.insert',
+        appointmentInsert,
         (error: Meteor.Error) => {
           setError('Operation failed: ' + error.message)
         }

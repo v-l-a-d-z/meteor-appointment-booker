@@ -1,11 +1,9 @@
 import { Meteor } from 'meteor/meteor'
-import { Appointment } from '../common/types/Appointment'
+import { Appointment, AppointmentInsert } from '../common/types/Appointment'
 import { Appointments } from '../db/Appointments'
 
 Meteor.methods({
-  'appointments.insert'(
-    appointment: Pick<Appointment, 'firstName' | 'lastName' | 'date'>
-  ) {
+  'appointments.insert'(appointment: AppointmentInsert) {
     if (!this.userId) {
       throw new Meteor.Error('Not authorized to insert appointment.')
     }
