@@ -68,3 +68,11 @@ button {
   border: 1px solid #aaa;
   border-radius: 16px;
 }
+
+button:enabled:hover {
+  cursor: pointer;
+}
+
+button:enabled:active {
+  background-color: snow;
+}
