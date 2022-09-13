@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor'
+import { check } from 'meteor/check'
 import { Appointment, AppointmentInsert } from '../common/types/Appointment'
 import { Appointments } from '../db/Appointments'
 
@@ -7,6 +8,10 @@ Meteor.methods({
     if (!this.userId) {
       throw new Meteor.Error('Not authorized to insert appointment.')
     }
+
+    check(appointment.firstName, String)
+    check(appointment.lastName, String)
+    check(appointment.date, Date)
 
     Appointments.insert({
       ...appointment,
@@ -20,6 +25,11 @@ Meteor.methods({
     }
 
     const { _id, firstName, lastName, date } = appointment
+
+    check(firstName, String)
+    check(lastName, String)
+    check(date, Date)
+
     const task = Appointments.findOne({ _id, userId: this.userId })
 
     if (!task) {
