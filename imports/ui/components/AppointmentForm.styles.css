@@ -9,13 +9,6 @@
   min-height: 150px;
 }
 
-.appointment-form input {
-  padding: 4px;
-  margin-top: 4px;
-  border: 1px solid #aaa;
-  border-radius: 4px;
-}
-
 .appointment-form label {
   padding: 4px;
   margin-top: 4px;
