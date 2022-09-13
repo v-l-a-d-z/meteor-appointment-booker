@@ -40,13 +40,10 @@ export const AppointmentList: React.FC<AppointmentListProps> = ({
     ).fetch()
   })
 
-  const processSearchPhrase = useCallback(
-    (searchString: string) => {
-      const searchStringSanitized = searchString.toLowerCase().trimEnd()
-      setSearchPhrase(searchStringSanitized)
-    },
-    [searchPhrase]
-  )
+  const processSearchPhrase = (searchString: string) => {
+    const searchStringSanitized = searchString.toLowerCase().trimEnd()
+    setSearchPhrase(searchStringSanitized)
+  }
 
   // TODO: extract item to component
   return (

@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from 'react'
+import React, { FormEvent, useCallback, useEffect, useState } from 'react'
 import { Meteor } from 'meteor/meteor'
 import './AppointmentForm.styles.css'
 import {
@@ -36,57 +36,60 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
     setDateString(selectedAppointment.date.toISOString().substring(0, 10))
   }, [selectedAppointment])
 
-  const submit = (e: FormEvent) => {
-    e.preventDefault()
-    setError(undefined)
+  const submit = useCallback(
+    (e: FormEvent) => {
+      e.preventDefault()
+      setError(undefined)
 
-    const date = new Date(dateString)
+      const date = new Date(dateString)
 
-    if (isEditing && selectedAppointment) {
-      // TODO: optimization: only trigger update when values changed
-      const updatedAppointment: Appointment = {
-        _id: selectedAppointment?._id,
-        firstName,
-        lastName,
-        date,
-        userId: selectedAppointment?.userId,
-      }
-      Meteor.call(
-        'appointments.update',
-        updatedAppointment,
-        (error: Meteor.Error) => {
-          setError(strings.operationFailed + error.message)
+      if (isEditing && selectedAppointment) {
+        // TODO: optimization: only trigger update when values changed
+        const updatedAppointment: Appointment = {
+          _id: selectedAppointment?._id,
+          firstName,
+          lastName,
+          date,
+          userId: selectedAppointment?.userId,
         }
-      )
-    } else {
-      const appointmentInsert: AppointmentInsert = {
-        firstName,
-        lastName,
-        date,
+        Meteor.call(
+          'appointments.update',
+          updatedAppointment,
+          (error: Meteor.Error) => {
+            setError(strings.operationFailed + error.message)
+          }
+        )
+      } else {
+        const appointmentInsert: AppointmentInsert = {
+          firstName,
+          lastName,
+          date,
+        }
+
+        Meteor.call(
+          'appointments.insert',
+          appointmentInsert,
+          (error: Meteor.Error) => {
+            setError(strings.operationFailed + error.message)
+          }
+        )
       }
 
-      Meteor.call(
-        'appointments.insert',
-        appointmentInsert,
-        (error: Meteor.Error) => {
-          setError(strings.operationFailed + error.message)
-        }
-      )
-    }
+      // TODO: display success message to user
+      // TODO: only clear the form when there is no error
+      clearForm()
+    },
+    [isEditing, dateString, selectedAppointment]
+  )
 
-    // TODO: display success message to user
-    // TODO: only clear the form when there is no error
-    clearForm()
-  }
-
-  const clearForm = () => {
+  const clearForm = useCallback(() => {
     setError(undefined)
     setFirstName('')
     setLastName('')
     setDateString('')
     setIsEditing(false)
     clearSelectedAppoitnment()
-  }
+  }, [clearSelectedAppoitnment])
 
   // TODO: nice to have: disable past dates in date picker
   return (
