@@ -25,6 +25,11 @@ Meteor.methods({
     }
 
     const { _id, firstName, lastName, date } = appointment
+
+    check(firstName, String)
+    check(lastName, String)
+    check(date, Date)
+
     const task = Appointments.findOne({ _id, userId: this.userId })
 
     if (!task) {
