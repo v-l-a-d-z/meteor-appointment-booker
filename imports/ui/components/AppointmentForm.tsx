@@ -6,6 +6,7 @@ import {
   AppointmentInsert,
 } from '/imports/common/types/Appointment'
 import { getDateString } from '/imports/helpers/DateHelper'
+import { strings } from '/imports/ui/localization/strings'
 
 export type AppointmentProps = {
   selectedAppointment?: Appointment
@@ -22,7 +23,7 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
   const [isEditing, setIsEditing] = useState(false)
   const [error, setError] = useState<string>()
 
-  const title = isEditing ? 'Edit appointment' : 'Create appointment'
+  const title = isEditing ? strings.editTitle : strings.createTitle
 
   useEffect(() => {
     if (!selectedAppointment) {
@@ -54,7 +55,7 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
         'appointments.update',
         updatedAppointment,
         (error: Meteor.Error) => {
-          setError('Operation failed: ' + error.message)
+          setError(strings.operationFailed + error.message)
         }
       )
     } else {
@@ -68,7 +69,7 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
         'appointments.insert',
         appointmentInsert,
         (error: Meteor.Error) => {
-          setError('Operation failed: ' + error.message)
+          setError(strings.operationFailed + error.message)
         }
       )
     }
@@ -93,7 +94,7 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
       <label>{title}</label>
       <input
         type="text"
-        placeholder="First name"
+        placeholder={strings.inputPlaceholderFirstName}
         value={firstName}
         name="username"
         required
@@ -102,7 +103,7 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
 
       <input
         type="text"
-        placeholder="Last name"
+        placeholder={strings.inputPlaceholderLastName}
         value={lastName}
         name="username"
         required
@@ -120,10 +121,10 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
 
       <div className="create-control">
         <button type="button" onClick={clearForm}>
-          Cancel
+          {strings.cancel}
         </button>
         <button type="submit" disabled={!firstName || !lastName || !dateString}>
-          Save
+          {strings.save}
         </button>
       </div>
       {error && <div className="error">{error}</div>}

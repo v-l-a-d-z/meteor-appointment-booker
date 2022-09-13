@@ -1,0 +1,17 @@
+export const strings: { [key: string]: string } = {
+  appTitle: 'Appointments',
+  signIn: 'sign in',
+  loginFailed: 'Login failed. Please check your username and password.',
+  inputPlaceholderUsername: 'Username',
+  inputPlaceholderPassword: 'Password',
+  logIn: 'Log In',
+  createTitle: 'Create appointment',
+  editTitle: 'Edit appointment',
+  operationFailed: 'Operation failed: ',
+  inputPlaceholderFirstName: 'First name',
+  inputPlaceholderLastName: 'Last name',
+  save: 'Save',
+  cancel: 'Cancel',
+  appointmentsListTitle: 'My appointments',
+  inputPlaceholderSearch: 'Search',
+}
