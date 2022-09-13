@@ -38,6 +38,7 @@
 .appointment-list .list-item:hover {
   background-color: snow;
   font-weight: 400;
+  cursor: pointer;
 }
 
 .list-item div {
