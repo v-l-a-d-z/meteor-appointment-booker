@@ -5,14 +5,16 @@ import './LoginScreen.styles.css'
 const LoginScreen: React.FC = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState<string>()
 
   const submit = (e: FormEvent) => {
     e.preventDefault()
 
-    Meteor.loginWithPassword(username, password)
+    Meteor.loginWithPassword(username, password, () => {
+      setError('Login failed. Please check your username and password.')
+    })
   }
 
-  // TODO: Display login errors
   return (
     <form onSubmit={submit} className="login-form">
       <div className="login-controls">
@@ -34,6 +36,7 @@ const LoginScreen: React.FC = () => {
 
         <button type="submit">Log In</button>
       </div>
+      {error && <div className="error">{error}</div>}
     </form>
   )
 }

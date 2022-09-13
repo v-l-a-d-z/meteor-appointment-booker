@@ -16,6 +16,7 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
   const [lastName, setLastName] = useState('')
   const [dateString, setDateString] = useState('')
   const [isEditing, setIsEditing] = useState(false)
+  const [error, setError] = useState<string>()
 
   const title = isEditing ? 'Edit appointment' : 'Create appointment'
 
@@ -32,6 +33,7 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
 
   const submit = (e: FormEvent) => {
     e.preventDefault()
+    setError(undefined)
 
     const date = new Date(dateString)
     if (date < new Date()) {
@@ -49,16 +51,32 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
         date,
         userId: selectedAppointment?.userId,
       }
-      Meteor.call('appointments.update', updatedAppointment)
+      Meteor.call(
+        'appointments.update',
+        updatedAppointment,
+        (error: Meteor.Error) => {
+          setError('Operation failed: ' + error.message)
+        }
+      )
     } else {
-      Meteor.call('appointments.insert', firstName, lastName, date)
+      Meteor.call(
+        'appointments.insert',
+        firstName,
+        lastName,
+        date,
+        (error: Meteor.Error) => {
+          setError('Operation failed: ' + error.message)
+        }
+      )
     }
 
     // TODO: display success message to user
+    // TODO: only clear the form when there is no error
     clearForm()
   }
 
   const clearForm = () => {
+    setError(undefined)
     setFirstName('')
     setLastName('')
     setDateString('')
@@ -104,6 +122,7 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
           Save
         </button>
       </div>
+      {error && <div className="error">{error}</div>}
     </form>
   )
 }

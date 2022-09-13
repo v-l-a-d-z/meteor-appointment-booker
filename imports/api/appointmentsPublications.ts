@@ -10,5 +10,6 @@ Meteor.publish('appointments', function publishAppointments() {
     return
   }
 
+  // TODO: Discuss - Return only upcoming appointments? How to handle past appointments?
   return Appointments.find({ userId: this.userId })
 })
