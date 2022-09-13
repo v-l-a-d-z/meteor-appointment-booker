@@ -27,16 +27,21 @@ export const AppointmentList: React.FC<AppointmentListProps> = ({
   return (
     <div className="appointment-list">
       <label>My appointments:</label>
-      {myAppointments.map((appointment: Appointment) => (
-        <div
-          className="list-item"
-          key={appointment._id}
-          onClick={() => handleItemSelected(appointment)}
-        >
-          <div>{`${appointment.firstName} ${appointment.lastName}`}</div>
-          <div>{appointment.date.toDateString()}</div>
-        </div>
-      ))}
+      {myAppointments.map((appointment: Appointment) => {
+        const fullName = `${appointment.firstName} ${appointment.lastName}`
+
+        return (
+          <div
+            className="list-item"
+            key={appointment._id}
+            onClick={() => handleItemSelected(appointment)}
+            title={fullName}
+          >
+            <div>{fullName}</div>
+            <div>{appointment.date.toDateString()}</div>
+          </div>
+        )
+      })}
     </div>
   )
 }
