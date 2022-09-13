@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { AppointmentForm } from '../components/AppointmentForm'
 import { AppointmentList } from '../components/AppointmentList'
 import './HomeScreen.styles.css'
-import { Appointment } from '/imports/db/Appointments'
+import { Appointment } from '/imports/common/types/Appointment'
 
 export const HomeScreen: React.FC = () => {
   const [selectedAppointment, setSelectedAppointment] = useState<Appointment>()
