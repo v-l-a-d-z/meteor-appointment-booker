@@ -79,7 +79,7 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
       // TODO: only clear the form when there is no error
       clearForm()
     },
-    [isEditing, dateString, selectedAppointment]
+    [isEditing, dateString, selectedAppointment, firstName, lastName]
   )
 
   const clearForm = useCallback(() => {
