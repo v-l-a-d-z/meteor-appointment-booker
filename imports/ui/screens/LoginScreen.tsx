@@ -22,7 +22,6 @@ const LoginScreen: React.FC = () => {
         <input
           type="text"
           placeholder={strings.inputPlaceholderUsername}
-          name="username"
           required
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -30,7 +29,6 @@ const LoginScreen: React.FC = () => {
         <input
           type="password"
           placeholder={strings.inputPlaceholderPassword}
-          name="password"
           required
           onChange={(e) => setPassword(e.target.value)}
         />

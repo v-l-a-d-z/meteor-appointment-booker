@@ -95,7 +95,6 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
     clearSelectedAppoitnment()
   }, [clearSelectedAppoitnment])
 
-  // TODO: nice to have: disable past dates in date picker
   return (
     <form onSubmit={submit} className="appointment-form">
       <label>{title}</label>
@@ -103,7 +102,6 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
         type="text"
         placeholder={strings.inputPlaceholderFirstName}
         value={firstName}
-        name="username"
         required
         onChange={(e) => setFirstName(e.target.value)}
       />
@@ -112,14 +110,12 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
         type="text"
         placeholder={strings.inputPlaceholderLastName}
         value={lastName}
-        name="username"
         required
         onChange={(e) => setLastName(e.target.value)}
       />
 
       <input
-        type={'date'}
-        name={'date'}
+        type="date"
         min={getDateString(new Date())}
         value={dateString}
         required
