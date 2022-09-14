@@ -56,7 +56,9 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
           'appointments.update',
           updatedAppointment,
           (error: Meteor.Error) => {
-            setError(strings.operationFailed + error.message)
+            if (error) {
+              setError(strings.operationFailed + error.message)
+            }
           }
         )
       } else {
@@ -70,7 +72,9 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
           'appointments.insert',
           appointmentInsert,
           (error: Meteor.Error) => {
-            setError(strings.operationFailed + error.message)
+            if (error) {
+              setError(strings.operationFailed + error.message)
+            }
           }
         )
       }
