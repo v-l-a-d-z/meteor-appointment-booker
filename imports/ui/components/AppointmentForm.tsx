@@ -116,7 +116,7 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
       />
 
       <input
-        type={'date'}
+        type="date"
         min={getDateString(new Date())}
         value={dateString}
         required
