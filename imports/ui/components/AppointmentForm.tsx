@@ -103,7 +103,6 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
         type="text"
         placeholder={strings.inputPlaceholderFirstName}
         value={firstName}
-        name="username"
         required
         onChange={(e) => setFirstName(e.target.value)}
       />
@@ -112,14 +111,12 @@ export const AppointmentForm: React.FC<AppointmentProps> = ({
         type="text"
         placeholder={strings.inputPlaceholderLastName}
         value={lastName}
-        name="username"
         required
         onChange={(e) => setLastName(e.target.value)}
       />
 
       <input
         type={'date'}
-        name={'date'}
         min={getDateString(new Date())}
         value={dateString}
         required
