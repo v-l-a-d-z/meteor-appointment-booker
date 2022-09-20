@@ -4,6 +4,7 @@ import '/imports/api/appointmentsMethods'
 import '/imports/api/appointmentsPublications'
 import { Appointments } from '/imports/db/Appointments'
 
+// TODO: Hardcoded seeding for demonstration purposes
 const SEED_USERNAME1 = 'testuser1'
 const SEED_PASSWORD1 = 'pass'
 
@@ -35,6 +36,10 @@ const seedAppointments = (username: string, count = 20, daysToFuture = 30) => {
 }
 
 Meteor.startup(() => {
+  console.log(
+    '⚠️ Warning: this application is for demonstration purposes only and contains hardcoded users and appointments seeding!'
+  )
+
   if (!Accounts.findUserByUsername(SEED_USERNAME1)) {
     Accounts.createUser({
       username: SEED_USERNAME1,
