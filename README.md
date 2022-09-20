@@ -1,11 +1,17 @@
 # meteor-appointment-booker
 
-A simple appointment booker app written with Meteor framework
+A simple appointment booker app.
+
+The app allows authenticated user to create and edit appointments. The list of user's ordered appointments is displayed as well. User can search in the list by 'First name' or 'Last name'.
+
+## Technology
+
+The app is written in [Meteor framework](https://www.meteor.com) leveraging Typescript, ReactJS and MongoDB. The UI has some basic responsivness to fit on small screens.
 
 ## Prerequisities
 
 - Node.js version >= 10 and <= 14
-- Meteor https://docs.meteor.com/install.html
+- Meteor ([install](https://docs.meteor.com/install.html))
 
 ### Supported web browsers
 
@@ -25,6 +31,10 @@ To start the project run:
 To execute tests run:
 
 `npm run test`
+
+### Test data
+
+For testing purposes two users are seeded if none is present (testuser1/pass, testuser2/word) together with randomly created future appointments.
 
 ## List of tasks
 
