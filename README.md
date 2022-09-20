@@ -4,6 +4,8 @@ A simple appointment booker app.
 
 The app allows authenticated user to create and edit appointments. The list of user's ordered appointments is displayed as well. User can search in the list by 'First name' or 'Last name'.
 
+![Application demo gif](https://github.com/v-l-a-d-z/meteor-appointment-booker/blob/develop/app_demo.gif)
+
 ## Technology
 
 The app is written in [Meteor framework](https://www.meteor.com) leveraging Typescript, ReactJS and MongoDB. The UI has some basic responsivness to fit on small screens.
